@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Grafica;
+package practicas;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -15,46 +15,43 @@ import javax.swing.JPanel;
  *
  * @author amawt
  */
-public class PanelPaint extends JPanel implements MouseListener {
+public class Dibujo extends JPanel implements MouseListener {
+
     private int x1 = 0;
     private int y1 = 0;
     private int x2 = 0;
     private int y2 = 0;
-    private int numFigura=0;
-   
-    private int dimx=0;
-    private int dimy=0;
+    private int numFigura = 0;
+
+    private int dimx = 0;
+    private int dimy = 0;
     private Color colorLinea = Color.BLACK;
 
-    public PanelPaint() {
+    public Dibujo() {
         this.addMouseListener(this);
     }
-    public void figura(String e){
-        
-        if(e.equalsIgnoreCase("Estrella")){
-        this.numFigura=0;
+
+    public void figura(String e) {
+
+        if (e.equalsIgnoreCase("Estrella")) {
+            this.numFigura = 0;
         }
-        if(e.equalsIgnoreCase("Circulo")){
-        this.numFigura=1;
+        if (e.equalsIgnoreCase("Circulo")) {
+            this.numFigura = 1;
         }
-        if(e.equalsIgnoreCase("Cuadrado")){
-        this.numFigura=2;
+        if (e.equalsIgnoreCase("Cuadrado")) {
+            this.numFigura = 2;
         }
-        if(e.equalsIgnoreCase("Rectangulo")){
-        this.numFigura=3;
-        }
-        if(e.equalsIgnoreCase("Triangulo")){
-        this.numFigura=4;
-        }
-   
-        
+ 
+
     }
- public void dimenciones(String e1, String e2){
-     this.dimx=Integer.valueOf(e1).intValue();
-     this.dimy=Integer.valueOf(e2).intValue();
- 
- 
- }
+    
+    
+    public void dimenciones(String e1, String e2) {
+        this.dimx = Integer.valueOf(e1).intValue();
+        this.dimy = Integer.valueOf(e2).intValue();
+
+    }
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -85,25 +82,7 @@ public class PanelPaint extends JPanel implements MouseListener {
             g.setColor(this.colorLinea);
             
         }
-        if(this.numFigura==3){
-            g.setColor(this.colorLinea);
-            g.drawLine(this.x1-this.dimx,this.y1-this.dimy,this.x1+this.dimx,this.y1-this.dimy);
-            g.drawLine(this.x1-this.dimx,this.y1+this.dimy,this.x1+this.dimx,this.y1+this.dimy);
-            g.drawLine(this.x1-this.dimx,this.y1+this.dimy,this.x1-this.dimx,this.y1-this.dimy);
-            g.drawLine(this.x1+this.dimx,this.y1+this.dimy,this.x1+this.dimx,this.y1-this.dimy);
-             g.setColor(this.colorLinea);
-        }
-       if(this.numFigura==4){
-           g.setColor(this.colorLinea);
-           
-           
-           g.drawLine(this.x1,this.y1-this.dimx,this.x1+this.dimx,this.y1+this.dimy);
-           g.drawLine(this.x1-this.dimx,this.y1+this.dimy,this.x1,this.y1-this.dimx);
-           g.drawLine(this.x1-this.dimx,this.y1+this.dimy,this.x1+this.dimx,this.y1+this.dimy);
-           g.setColor(this.colorLinea);
-           
-           
-        }
+      
     }
 
     @Override
@@ -117,15 +96,13 @@ public class PanelPaint extends JPanel implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        //   JOptionPane.showMessageDialog(this, e.getPoint());
-        
-         
+
         this.x1 = e.getX();
         this.y1 = e.getY();
-        
+        //this.x2 = 500;
+        //this.y2 = 500;
+
         super.repaint();
-         
-           
     }
 
     @Override
@@ -176,5 +153,4 @@ public class PanelPaint extends JPanel implements MouseListener {
         this.colorLinea = colorLinea;
     }
 
-    
 }
